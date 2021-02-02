@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site2.min.css",
+    "inputFiles": [
+      "wwwroot/css/bootstrap.css",
+      "wwwroot/css/custom.css",
+      "wwwroot/css/base.css",
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/scripts/scripts2.min.js",
+    "inputFiles": [
+      "wwwroot/scripts/jquery-3.3.1.min.js",
+      "wwwroot/scripts/jquery.validate.min.js",
+      "wwwroot/scripts/modernizr-2.8.3.js",
+      "wwwroot/scripts/bootstrap.js",
+      "wwwroot/scripts/respond.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

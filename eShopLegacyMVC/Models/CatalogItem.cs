@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eShopLegacyMVC.Models
 {
@@ -11,6 +12,7 @@ namespace eShopLegacyMVC.Models
         {
             PictureFileName = DefaultPictureName;
         }
+
         public int Id { get; set; }
 
         [Required]

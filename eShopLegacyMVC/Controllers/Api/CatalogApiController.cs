@@ -1,10 +1,10 @@
-﻿using System.Web.Http;
-using eShopLegacyMVC.Models;
+﻿using eShopLegacyMVC.Models;
 using eShopLegacyMVC.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eShopLegacyMVC.Controllers.Api
 {
-    public class CatalogApiController : ApiController
+    public class CatalogApiController : ControllerBase
     {
         private ICatalogService service;
 
@@ -15,21 +15,21 @@ namespace eShopLegacyMVC.Controllers.Api
 
         [HttpGet]
         [Route("api/catalog/brands")]
-        public virtual IHttpActionResult GetBrands()
+        public virtual ActionResult GetBrands()
         {
             return Ok(service.GetCatalogBrands());
         }
 
         [HttpGet]
         [Route("api/catalog")]
-        public virtual IHttpActionResult Get()
+        public virtual ActionResult Get()
         {
             return Ok(service.GetCatalogItemsPaginated(100, 0));
         }
 
         [HttpPost]
         [Route("api/catalog")]
-        public virtual IHttpActionResult Create([FromBody] CatalogItem catalogItem)
+        public virtual ActionResult Create([FromBody] CatalogItem catalogItem)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +41,7 @@ namespace eShopLegacyMVC.Controllers.Api
 
         [HttpPut]
         [Route("api/catalog/{id}")]
-        public virtual IHttpActionResult Update([FromBody] CatalogItem catalogItem, int id)
+        public virtual ActionResult Update([FromBody] CatalogItem catalogItem, int id)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace eShopLegacyMVC.Controllers.Api
 
         [HttpDelete]
         [Route("api/catalog/{id}")]
-        public virtual IHttpActionResult Delete(int id)
+        public virtual ActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {

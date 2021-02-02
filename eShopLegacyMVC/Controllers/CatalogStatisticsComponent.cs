@@ -1,21 +1,20 @@
 ﻿using System.Linq;
-using System.Web.Mvc;
 using eShopLegacyMVC.Services;
 using eShopLegacyMVC.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eShopLegacyMVC.Controllers
 {
-    public class CatalogStatisticsController : Controller
+    public class CatalogStatisticsComponent : ViewComponent
     {
         private ICatalogService service;
 
-        public CatalogStatisticsController(ICatalogService service)
+        public CatalogStatisticsComponent(ICatalogService service)
         {
             this.service = service;
         }
 
-        [ChildActionOnly]
-        public ActionResult Index()
+        public IViewComponentResult Invoke()
         {
             var viewModel = new CatalogStatisticsViewModel
             {
@@ -23,7 +22,7 @@ namespace eShopLegacyMVC.Controllers
                 NumberOfCategories = service.GetCatalogTypes().Count(),
                 NumberOfItems = (int)service.GetCatalogItemsPaginated(1000, 0).TotalItems
             };
-            return View(viewModel);
+            return View("~/Views/CatalogStatistics/Index.cshtml", viewModel);
         }
     }
 }
